@@ -1,0 +1,44 @@
+INICIO
+
+três áreas o inicio
+*linha amarela
+*linha verde
+*linha azul
+
+cada item levara a pagina de produtos (portfolio)
+
+carrousel na parte de baixo do banner principal com peças (vendidas e conhecidas)
+
+
+PAGINA DE PRODUTOS
+ contenha abas das três áreas categorizadas
+ barra de pesquisa filtrara pelo código da peça
+   liste os produtos
+	botão para levar até o whats
+	pagina do próprio produto com detalhamento
+	   peças sugeridas em lista
+	
+
+
+sobre
+
+contato
+
+footer
+  redes sociais
+
+
+
+
+
+TITAN
+
+inicio
+  sobre
+
+produtos
+
+contato
+  
+	
+  

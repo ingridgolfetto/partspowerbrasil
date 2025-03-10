@@ -1,0 +1,43 @@
+<div class="container-home">
+  <div class="cotainer-menu">
+    <app-menu (itemMenuSelecionado)="onItemMenuSelecionado($event)"></app-menu>
+  </div>
+
+  <div class="container-cards">
+    <div class="box">
+      <div class="img"><i class="fas fa-laptop"></i></div>
+      <h1 class="titulo">Linha amarela</h1>
+    </div>
+
+    <div class="box" data-sr-id="5">
+      <div class="img"><i class="fas fa-server"></i></div>
+      <h1 class="titulo">Linha verde</h1>
+    </div>
+
+    <div class="box" data-sr-id="6">
+      <div class="img"><i class="fas fa-comments"></i></div>
+      <h1 class="titulo">Acoplamentos</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-carousel">
+  <h1>Produtos em destaque</h1>
+  <div class="carousel">
+  
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of slides">
+        <ng-template carouselSlide>
+          <div class="carousel-card">
+            <img [src]="slide.imagePath" />
+            <span>{{slide.descricao}}</span>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+
+<div id="/sobre">
+  <div></div>
+</div>

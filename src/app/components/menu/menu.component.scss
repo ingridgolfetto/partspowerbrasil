@@ -1,0 +1,47 @@
+
+  .nav-links {
+    display: flex;
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    mat-drawer-container {
+        height: 100%;
+    }
+  }
+
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    justify-content: space-between;
+  }
+
+.mat-toolbar {
+    background-color: transparent;
+    color: white;
+}
+
+.logo {
+  margin-top: 10px;
+}
+
+button.item-menu{
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+button.item-menu:active, button.item-menu:hover, .link-ativado {
+        transition: left 500ms;
+        border: 1px solid #e59416 !important;
+        border-radius: 0px !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        top: 10px !important;
+        height: 40px !important;
+        
+}
+
+.mat-mdc-fab .mat-mdc-button-persistent-ripple::before {
+    background: none;
+}

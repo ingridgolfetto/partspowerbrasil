@@ -1,0 +1,123 @@
+$corPrimaria:#e59416;
+
+.container-home {
+    display: relative;
+    background-image: url('./../../../assets/imgs/bg-principal-fundopreto30.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 100vh;
+    // -webkit-box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
+    // -moz-box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
+    // box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
+
+    .continer-menu {
+        display: fixed;
+        top: 0;
+    }
+
+    .container-cards {
+        position: absolute;
+        bottom: -58px;
+        display: flex;
+        align-items: flex-end;
+        width: 90%;
+        width: 90%;
+        justify-self: anchor-center;
+
+        .box {
+            margin: 0px 20px;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 260px;
+            width: 340px;
+            position: relative;
+            background-color: #454545;
+            color: white;
+            display: grid;
+            transition: background-color 300ms linear;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            background-color: rgba(42, 42, 42, 1);
+          }
+
+        .img {
+            background-color: #e59416;
+            position: absolute;
+            top: -79px;
+            height: 200px;
+            width: 90%;
+            border-radius: 50%;
+            left: 22%;
+            width: 200px;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-top: 75px;
+            align-content: center;
+        }
+
+    }
+}
+
+.container-carousel {
+    background: #2A2A2A;
+    padding-top: 95px;
+    text-align: center;
+
+    h1 {
+        margin-bottom: 30px;
+        color: white;
+    }
+    .carousel {
+        padding: 20px 50px;
+        text-align: center;
+        margin: 0px 50px 20px 50px;
+        background: white;
+        border-radius: 10px;
+       
+
+        .carousel-card {
+            padding: 15px;
+            margin-top: 20px;
+            width: 200px;
+            justify-items: center;
+
+            img {
+            width: 170px;
+            height: 150px;
+                
+            }
+            span {
+                padding-top: 10px;
+                color: black;
+            }
+        }
+    }
+}
+
+owl-carousel-o {
+    position: relative;
+  }
+  
+  ::ng-deep .owl-prev, ::ng-deep .owl-next {
+    position:absolute;
+    top: 50%;
+    background-color: #454545 !important;
+  }
+  ::ng-deep .owl-prev:hover, ::ng-deep .owl-next:hover {
+    background-color: #2A2A2A !important;
+  }
+  
+  ::ng-deep .owl-prev {
+    left: -40px;
+  }
+  
+  ::ng-deep .owl-next {
+    right: -40px;
+  }
+

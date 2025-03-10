@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <img class="logo" src="img/logo-semfundo.png" width="75" height="75" alt="Logo Parts Power Flex"/>
+    <nav class="nav-links">
+      <ng-container *ngFor="let item of itensMenu">
+        <button class="item-menu" [ngClass]="item.selecionado ? 'link-ativado' : ''"
+         mat-fab (click)="navegacaoRotaMenu(item.rota)">{{item.nome}}</button>
+      </ng-container>
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>
