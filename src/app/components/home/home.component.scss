@@ -1,28 +1,65 @@
 $corPrimaria:#e59416;
 
 .container-home {
-    display: relative;
-    background-image: url('./../../../assets/imgs/bg-principal-fundopreto30.png');
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    height: 100vh;
-    // -webkit-box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
-    // -moz-box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
-    // box-shadow: inset 0px 0px 200px 200px rgba(0,0,0,0.75);
+    // display: relative;
+    // background-image: url('./../../../assets/imgs/bg-principal-fundopreto30.png');
+    // background-size: cover;
+    // background-position: bottom;
+    // background-repeat: no-repeat;
+    // height: 100vh;
 
-    .continer-menu {
-        display: fixed;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    background: #555555;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+
+    video {
+        position: absolute;
+        top: 30%;
+        left: 675px;
+        min-width: 1352px;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        background-size: cover;
+      }
+
+      .overlay {
+        position: absolute;
         top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); // Adjust the color and opacity as needed
+      }
+
+    .container-menu {
+        // display: fixed;
+        top: 0;
+        position: fixed;
+        z-index: 9;
+
+        &.scrolled {
+            background-color: white; // Adjust the color and opacity as needed
+            width: 100%;
+            height: 10%;
+            -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.49);
+            -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.49);
+            box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.49);
+        }
     }
 
     .container-cards {
         position: absolute;
-        bottom: -58px;
+        bottom: -25px;
         display: flex;
         align-items: flex-end;
-        width: 90%;
-        width: 90%;
+
         justify-self: anchor-center;
 
         .box {
@@ -30,7 +67,7 @@ $corPrimaria:#e59416;
             padding: 20px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-            height: 260px;
+            height: 305px;
             width: 340px;
             position: relative;
             background-color: #454545;
@@ -65,21 +102,32 @@ $corPrimaria:#e59416;
 }
 
 .container-carousel {
-    background: #2A2A2A;
-    padding-top: 95px;
+    background-image: url('./../../../assets/imgs/bg-sobre-nos.jpeg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    // background: #2A2A2A;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 
     h1 {
         margin-bottom: 30px;
-        color: white;
+        color: black;
     }
+
+    h3 {
+        margin-bottom: 30px;
+        font-weight: 400;
+    }
+
     .carousel {
         padding: 20px 50px;
         text-align: center;
         margin: 0px 50px 20px 50px;
         background: white;
         border-radius: 10px;
-       
+
 
         .carousel-card {
             padding: 15px;
@@ -90,20 +138,171 @@ $corPrimaria:#e59416;
             img {
             width: 170px;
             height: 150px;
-                
+
             }
             span {
                 padding-top: 10px;
                 color: black;
             }
+
+            button {
+                background-color: #e59416;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 10px;
+                cursor: pointer;
+                margin: 15px;
+            }
         }
     }
+
+    .link {
+        color: $corPrimaria;
+        border: none;
+        background: transparent;
+        padding: 20px;
+        cursor: pointer;
+
+        &:hover {
+            color: #c07f16;
+        }
+
+        svg {
+            vertical-align: middle;
+        }
+    }
+}
+
+.container-sobre {
+    position: relative;
+    padding: 50px;
+    background: #2A2A2A;
+
+    // background-image: url('./../../../assets/imgs/bg-sobre-nos.jpeg');
+    // background-size: cover;
+    // background-position: bottom;
+    // background-repeat: no-repeat;
+        justify-items: center;
+
+    h1 {
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        color: white;
+        margin-bottom: 30px;
+        font-weight: 400;
+    }
+
+    .body-sobre {
+        display: flex;
+        height: 100%;
+        position: relative;
+
+        mat-card {
+            max-width: 400px !important;
+            max-height: 160px !important;
+            margin-right: 30px;
+            padding: 10px;
+            background: #454545;
+            border: none;
+
+            mat-card-title {
+                color: white;
+                margin-bottom: 15px;
+                font-weight: bold !important;
+            }
+
+            mat-card-subtitle {
+                color: white;
+            }
+        }
+    }
+
+
+}
+
+.container-contato {
+    padding: 50px;
+    background: #454545;
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    .body-contato{
+        display: flex;
+        justify-content: center;
+
+        .form-contato {
+            display: grid;
+            margin-right: 20px;
+
+            input, textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            textarea {
+                resize: none;
+              }
+
+            .btn-enviar {
+                color: white;
+                border: none;
+                background: $corPrimaria;
+                padding: 20px;
+                cursor: pointer;
+        
+                &:hover {
+                    background: #c07f16;
+                }
+            }
+        }
+
+        .info-contato{
+            display: grid;
+            color: white;
+
+            .info {
+                margin-top: 10px;
+                span {
+                    margin-left: 10px;
+                }
+            }
+
+            .socials {
+                margin-top: 15px;
+
+                a {
+                    margin-right: 10px;
+                }
+                svg:hover path { 
+                    fill: $corPrimaria;
+                }
+            }
+        }
+    }
+}
+
+.container-rodape {
+    padding: 10px;
+    background: #2A2A2A;
+    color: white;
+    text-align: center;
+    font-size: 12px;
 }
 
 owl-carousel-o {
     position: relative;
   }
-  
+
   ::ng-deep .owl-prev, ::ng-deep .owl-next {
     position:absolute;
     top: 50%;
@@ -112,11 +311,11 @@ owl-carousel-o {
   ::ng-deep .owl-prev:hover, ::ng-deep .owl-next:hover {
     background-color: #2A2A2A !important;
   }
-  
+
   ::ng-deep .owl-prev {
     left: -40px;
   }
-  
+
   ::ng-deep .owl-next {
     right: -40px;
   }

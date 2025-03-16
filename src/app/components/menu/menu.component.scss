@@ -16,6 +16,7 @@
 .mat-toolbar {
     background-color: transparent;
     color: white;
+    position: fixed;
 }
 
 .logo {
@@ -28,6 +29,7 @@ button.item-menu{
     border: none;
     border-radius: 0px;
     box-shadow: none;
+    cursor: pointer;
 }
 
 button.item-menu:active, button.item-menu:hover, .link-ativado {
@@ -44,4 +46,8 @@ button.item-menu:active, button.item-menu:hover, .link-ativado {
 
 .mat-mdc-fab .mat-mdc-button-persistent-ripple::before {
     background: none;
+}
+
+.black {
+  color: #000000 !important;
 }

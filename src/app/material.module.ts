@@ -14,6 +14,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbar } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const material = [
   MatToolbarModule, 
@@ -24,14 +26,18 @@ const material = [
   MatIconModule,
   MatToolbar,
   MatCardModule,
-  MatButtonModule,
   MatIconModule,
   MatGridListModule,
   MatDividerModule,
   MatSidenavModule,
   MatListModule,
   MatTabsModule,
-  MatMenuModule
+  MatMenuModule,
+  MatFormFieldModule,
+  FormsModule,
+  ReactiveFormsModule,
+  MatToolbarModule,
+  MatButtonModule
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { MaterialModule } from '../../material.module';
 import { CommonModule } from '@angular/common';
 
@@ -9,10 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
+  @Input() mudaEstado: boolean | undefined
   itensMenu = [ 
     {
     nome: 'Home',
-    rota: '/',
+    rota: 'home',
     selecionado: true
   }, 
   {
@@ -22,12 +23,12 @@ export class MenuComponent {
   },
   {
     nome: 'Sobre',
-    rota: '/sobre',
+    rota: 'sobre',
     selecionado: false
   }, 
   {
     nome: 'Contato',
-    rota: '/contato',
+    rota: 'contato',
     selecionado: false
   }  
 ];

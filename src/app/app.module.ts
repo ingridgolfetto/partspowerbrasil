@@ -10,6 +10,7 @@ import { MaterialModule } from './material.module';
 import { routes } from './app.routes';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -17,12 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MaterialModule,
     CarouselModule,
     HttpClientModule,
     HomeComponent,
     RouterModule.forRoot(routes),
-    MenuComponent,
+    MenuComponent
   ],
   exports: [RouterModule],
   providers: [],
