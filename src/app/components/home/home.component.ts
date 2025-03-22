@@ -1,17 +1,17 @@
 import { Component, HostListener, OnInit, output } from '@angular/core';
-import { MenuComponent } from "../menu/menu.component";
-import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ISlide } from '../../interface/slide';
-import { CommonModule } from '@angular/common';
 import { SLIDES } from '../../enums/slides.enum';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { IMenuItems } from '../../interface/menu';
+import { MENU } from '../../enums/menu-itens';
+import { MaterialModule } from '../../material.module';
+import { PartsService } from '../../service/parts.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [MenuComponent, MatCardModule, MatButtonModule, CarouselModule, CommonModule, ReactiveFormsModule, MatFormFieldModule],
+  imports: [MaterialModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -19,19 +19,7 @@ export class HomeComponent implements OnInit {
 
   mudaEstado: boolean = false;
   formContato: FormGroup | undefined;
-
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const menu = document.getElementById('menu');
-    if (window.pageYOffset > 50) { // Adjust the scroll position as needed
-      menu?.classList.add('scrolled');
-      this.mudaEstado = true;
-    } else {
-      menu?.classList.remove('scrolled');
-      this.mudaEstado = false;
-    }
-  }
+  
 
   customOptions: OwlOptions = {
     loop: true,
@@ -41,6 +29,9 @@ export class HomeComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['<', '>'],
+    autoplay: true, // Ativa o autoplay
+    autoplayTimeout: 3000, // Tempo entre as transições (em milissegundos)
+    autoplayHoverPause: true,
     responsive: {
       0: {
         items: 1
@@ -59,10 +50,31 @@ export class HomeComponent implements OnInit {
   }
 
   slides: ISlide[] = SLIDES;
+  menu: IMenuItems[] = MENU;
+  categoriasProdutos: string[] = ['Linha amarela', 'Linha verde', 'Acoplamentos']
 
-  constructor() { }
+  constructor(
+    private partsService: PartsService,
+    private router: Router
+
+  ) { }
   
   ngOnInit() {
+
+    this.partsService.itemMenuSelecionado.subscribe((rota: string) => {
+      console.log('Rota selecionada no menu:', rota);
+      this.router.events.subscribe((event) => {
+        console.log(event)
+          if (event instanceof NavigationEnd) {
+            this.setScroll(rota)
+            console.log(event)
+
+        } 
+      });
+      this.setScroll(rota)
+
+    });
+
     this.formContato = new FormGroup({
       nome: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -70,16 +82,14 @@ export class HomeComponent implements OnInit {
 
     });
   }
-
-  onItemMenuSelecionado(rota: string) {
-    console.log('Rota selecionada no menu:', rota);
-    const element = document.querySelector(`#${rota}`);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-  }
-
   enviarContato() {
     console.log(this.formContato?.value);
+  }
+
+  setScroll(rota: string) {
+    const element = document.querySelector(`#${rota}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

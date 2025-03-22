@@ -1,0 +1,164 @@
+$corPrimaria:#e59416;
+.cor-primaria {color: #e59416 !important};
+
+.container-lista-produtos {
+
+  .header-produtos {
+    position: relative;
+    height: 500px;
+    
+
+    video {
+      position: absolute;
+      top: 40%;
+      left: 675px;
+      min-width: 1352px;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      background-size: cover;
+    }
+  
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); // Adjust the color and opacity as needed
+    }
+
+    .descricao {
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      width: 55%;
+      justify-items: center;
+      justify-self: anchor-center;
+
+      .titulo {
+        color: white;
+        margin: 0;
+      }
+
+      .sub1 {
+        color: $corPrimaria;
+      }
+
+      .sub2 {
+        color: hsl(210 20% 96%)
+      }
+    }
+  }
+
+
+  .btn-search {
+    padding-top: 20px;
+    display: flex;
+    justify-self: center;
+    width: 400px;
+  }
+
+::ng-deep .mat-form-field.mat-focused {
+    .mat-form-field-label {
+        color: #ff884d;
+    }
+    .mat-form-field-ripple {
+        background-color: #ff884d;
+    }
+    .mat-form-field-required-marker {
+        color: #ff884d;
+    }
+    .mat-input-element {
+        color: #ff884d;
+    }
+}
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+      color: slategray;
+  }
+  .mat-form-field-label {
+      color: slategray;
+  }
+  .mat-form-field-underline {
+      background-color: slategray;
+  }
+  .mat-form-field-ripple {
+      background-color: slategray;
+  }
+  .mat-form-field-required-marker {
+      color: slategray;
+  }
+}
+
+
+.body-produtos {
+  display: flex;
+  padding: 50px;
+
+  
+
+  .filter {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+  
+    button {
+      margin: 0 10px;
+      padding: 0px 20px;
+      color: black;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+  
+      &:hover, &:active {
+        color: #c07f16;
+      }
+    }
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: #555;
+    }
+
+    .buy-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #e59416;
+      color: white;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c07f16;
+      }
+    }
+  }
+}
+}
+}

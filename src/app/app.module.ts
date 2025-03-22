@@ -11,6 +11,7 @@ import { routes } from './app.routes';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListaProdutosComponent } from './components/lista-produtos/lista-produtos.component';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     HomeComponent,
     RouterModule.forRoot(routes),
-    MenuComponent
+    MenuComponent,
+    ListaProdutosComponent
   ],
   exports: [RouterModule],
   providers: [],

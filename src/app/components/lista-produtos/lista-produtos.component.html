@@ -1,0 +1,45 @@
+<div class="container-lista-produtos">
+  <div class="header-produtos">
+     <video width="500" autoplay muted loop>
+    <source src="sobre.mp4" type="video/mp4">
+  </video>
+    <div class="overlay"></div>
+
+    <div class="descricao">
+      <h3 class="titulo">NOSSOS PRODUTOS</h3>
+      <h1 class="sub1">Soluções de alta performance para sua indústria</h1>
+      <h3 class="sub2">Conheça nossa linha de produtos desenvolvidos com materiais de alta qualidade e tecnologia avançada para garantir o máximo desempenho em aplicações exigentes.</h3>
+    </div>
+  </div>
+
+  <mat-form-field class=" btn-search">
+    <mat-label>Digite o código </mat-label>
+    <input matInput type="text" [(ngModel)]="valorBusca" (input)="filterBySearch($event)">
+    @if (valorBusca) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="resetFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+  
+  
+  <div class="body-produtos">
+
+
+    <div class="filter">
+      <button (click)="resetFilter()">Todos</button>
+      <button *ngFor="let category of categories" (click)="filterByCategory(category)">
+        {{ category }}
+      </button>
+    </div>
+    
+    <div class="product-list">
+      <div class="product-card" *ngFor="let product of filteredProducts">
+        <img [src]="product.imageUrl" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <button class="buy-button">Comprar</button>
+      </div>
+  </div>
+  </div>
+</div>
+

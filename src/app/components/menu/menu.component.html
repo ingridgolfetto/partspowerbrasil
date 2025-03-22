@@ -1,16 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <!-- <ng-container *ngIf="mudaEstado; else comFundo"> -->
       <img class="logo" src="img/logo-semfundo.png" width="75" height="75" alt="Logo Parts Power Flex"/>
-    <!-- </ng-container> -->
-    <!-- <ng-template #comFundo>
-    <img class="logo" src="img/logo.jpg" width="75" height="75" alt="Logo Parts Power Flex"/>
-    </ng-template> -->
     <nav class="nav-links" >
       <ng-container *ngFor="let item of itensMenu">
-        <button class="item-menu" [ngClass]="[item.selecionado ? 'link-ativado' : '', mudaEstado ? 'black' : '']"
+        <button class="item-menu" [ngClass]="[item.selecionado ? 'link-ativado' : '']"
           (click)="navegacaoRotaMenu(item.rota)">{{item.nome}}</button>
       </ng-container>
     </nav>
   </mat-toolbar-row>
-</mat-toolbar>

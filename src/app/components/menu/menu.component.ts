@@ -1,47 +1,29 @@
-import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { MaterialModule } from '../../material.module';
-import { CommonModule } from '@angular/common';
+import { IMenuItems } from '../../interface/menu';
+import { MENU } from '../../enums/menu-itens';
+import { Router } from '@angular/router';
+import { PartsService } from '../../service/parts.service';
 
 @Component({
   selector: 'app-menu',
-  imports: [MaterialModule, CommonModule],
+  imports: [MaterialModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-  @Input() mudaEstado: boolean | undefined
-  itensMenu = [ 
-    {
-    nome: 'Home',
-    rota: 'home',
-    selecionado: true
-  }, 
-  {
-    nome: 'Produtos',
-    rota: '/produtos',
-    selecionado: false
-  },
-  {
-    nome: 'Sobre',
-    rota: 'sobre',
-    selecionado: false
-  }, 
-  {
-    nome: 'Contato',
-    rota: 'contato',
-    selecionado: false
-  }  
-];
+  itensMenu: IMenuItems[] = MENU;
   mobile = window.innerWidth < 768;
   sidenavOpened = false;
   activeRoute: string = '';
-  @Output() itemMenuSelecionado = new EventEmitter<string>();
 
-  constructor(private renderer: Renderer2) {  
+  constructor(
+    private route: Router,
+    private service: PartsService
+  ) {  
     window.addEventListener('resize', () => {
     this.mobile = window.innerWidth < 768;
   });
-  console.log(this.mobile);
   }
 
   toggleSidenav() {
@@ -49,9 +31,14 @@ export class MenuComponent {
   }
 
   navegacaoRotaMenu(rota: string) {
-   this.itensMenu.forEach(item => {
+    this.itensMenu.forEach(item => {
       item.selecionado = item.rota === rota;
-    });
-    this.itemMenuSelecionado.emit(rota); 
-  }
+      if(rota != 'produtos') {
+        this.route.navigate(['home']);
+        this.service.itemMenuSelecionado.emit(rota); 
+      } else {
+      this.route.navigate(['produtos']);
+    }
+  })
+}
 }

@@ -10,10 +10,14 @@ cada item levara a pagina de produtos (portfolio)
 carrousel na parte de baixo do banner principal com peças (vendidas e conhecidas)
 
 
+menu
+item de produtos abrir uma SUBitens
+
 PAGINA DE PRODUTOS
  contenha abas das três áreas categorizadas
  barra de pesquisa filtrara pelo código da peça
    liste os produtos
+   CONTENHA SUBPRODUTOS
 	botão para levar até o whats
 	pagina do próprio produto com detalhamento
 	   peças sugeridas em lista
@@ -24,8 +28,11 @@ sobre
 
 contato
 
+
 footer
   redes sociais
+  botão de whats
+
 
 
 
