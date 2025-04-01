@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PRODUTOS } from '../../enums/produtos';
 import { Produtos } from '../../interface/produtos';
 import { Categorias } from '../../enums/categorias';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material.module';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -13,31 +14,53 @@ import { MaterialModule } from '../../material.module';
 })
 export class ListaProdutosComponent implements OnInit {
   products: Produtos[] = PRODUTOS;
-
+  @ViewChild('searchInput') searchInput!: ElementRef;
   filteredProducts: Produtos[] = this.products;
   categories = Object.values(Categorias);
-  valorBusca: string = '';
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      const categoria = params['categoria'];
+      const codigo = params['codigo'];
+
+      console.log(params)
+
+      if (categoria) {
+        // Seleciona a categoria na lista
+        this.filterByCategory(categoria);
+      } else {
+        // Filtra diretamente pelo código no input
+        this.filterBySearch(codigo);
+        this.setInputValue(codigo);
+      }
+    });
     
   }
 
-  filterByCategory(category: Categorias) {
+  filterByCategory(category: string) {
     this.filteredProducts = this.products.filter(product => product.category === category);
+    this.resetInput();
+  }
+
+  filterBySubcategory(subcategory: string, category: string) {
+    this.filteredProducts = this.products.filter(product =>
+      product.category === category && // Verifica se o produto pertence à categoria
+      product.subcategories?.includes(subcategory) // Verifica se o produto pertence à subcategoria
+    );
     this.resetInput();
   }
 
   resetFilter() {
     this.filteredProducts = this.products;
-    this.valorBusca = ''
-    
+    this.setInputValue('')
   }
 
-  filterBySearch(event: any) {
-    console.log(event)
-    const lowerCaseSearch = event.target.value.toLowerCase();
+  filterBySearch(valor: string) {
+    console.log('filter', valor)
+    const lowerCaseSearch = valor.toLowerCase();
     this.filteredProducts = this.products.filter(product =>
       product.name.toLowerCase().includes(lowerCaseSearch)
     );
@@ -48,5 +71,18 @@ export class ListaProdutosComponent implements OnInit {
       if (inputElement) {
         inputElement.value = '';
       }
+  }
+
+  setInputValue(value: string) {
+    if (this.searchInput) {
+      this.searchInput.nativeElement.value = value; // Define o valor no input
+    }
+  }
+
+  rotaComprar(id: string) {
+      const mensagem = `Olá, estou interessado no produto ${id}. Poderia me fornecer um orçamento? quantidade de peças:`;
+      const numeroWhatsApp = '5511991763691'; // Substitua pelo número do WhatsApp (incluindo o código do país)
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
   }
 }
