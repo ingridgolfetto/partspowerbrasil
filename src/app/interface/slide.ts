@@ -1,5 +1,5 @@
 export interface ISlide {
   imagePath: string;
-  itemPath: string;
+  id: number;
   descricao: string;
 }

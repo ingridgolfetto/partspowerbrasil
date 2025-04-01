@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { 
   MatToolbarModule
  } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
@@ -28,10 +28,9 @@ const material = [
   MatIconModule,
   MatToolbar,
   MatCardModule,
-  MatIconModule,
+  MatIconButton,
   MatGridListModule,
   MatDividerModule,
-  MatSidenavModule,
   MatListModule,
   MatTabsModule,
   MatMenuModule,

@@ -3,8 +3,6 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ISlide } from '../../interface/slide';
 import { SLIDES } from '../../enums/slides.enum';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
-import { IMenuItems } from '../../interface/menu';
-import { MENU } from '../../enums/menu-itens';
 import { MaterialModule } from '../../material.module';
 import { PartsService } from '../../service/parts.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -50,9 +48,6 @@ export class HomeComponent implements OnInit {
   }
 
   slides: ISlide[] = SLIDES;
-  menu: IMenuItems[] = MENU;
-  categoriasProdutos: string[] = ['Linha amarela', 'Linha verde', 'Acoplamentos']
-
   constructor(
     private partsService: PartsService,
     private router: Router
@@ -62,12 +57,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.partsService.itemMenuSelecionado.subscribe((rota: string) => {
-      console.log('Rota selecionada no menu:', rota);
       this.router.events.subscribe((event) => {
-        console.log(event)
           if (event instanceof NavigationEnd) {
             this.setScroll(rota)
-            console.log(event)
 
         } 
       });
@@ -82,14 +74,22 @@ export class HomeComponent implements OnInit {
 
     });
   }
-  enviarContato() {
-    console.log(this.formContato?.value);
+
+  buscarProdutos(codigo?: string) {
+    this.router.navigate(['produtos'], { queryParams: { codigo } });
   }
 
   setScroll(rota: string) {
     const element = document.querySelector(`#${rota}`);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  rotaComprar(id: string) {
+    const mensagem = `Olá, estou interessado no produto ${id}. Poderia me fornecer um orçamento? quantidade de peças:`;
+    const numeroWhatsApp = '5511991763691'; // Substitua pelo número do WhatsApp (incluindo o código do país)
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+}
 }

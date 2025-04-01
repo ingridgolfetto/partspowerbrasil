@@ -17,6 +17,8 @@ export class ListaProdutosComponent implements OnInit {
   @ViewChild('searchInput') searchInput!: ElementRef;
   filteredProducts: Produtos[] = this.products;
   categories = Object.values(Categorias);
+  categoriaSelecionada: string = '';
+  subcategoriaSelecionada: string = '';
 
   constructor(private route: ActivatedRoute) {}
 
@@ -26,12 +28,11 @@ export class ListaProdutosComponent implements OnInit {
       const categoria = params['categoria'];
       const codigo = params['codigo'];
 
-      console.log(params)
 
       if (categoria) {
         // Seleciona a categoria na lista
         this.filterByCategory(categoria);
-      } else {
+      } else if (codigo) {
         // Filtra diretamente pelo código no input
         this.filterBySearch(codigo);
         this.setInputValue(codigo);
@@ -41,11 +42,14 @@ export class ListaProdutosComponent implements OnInit {
   }
 
   filterByCategory(category: string) {
+    this.categoriaSelecionada = category;
     this.filteredProducts = this.products.filter(product => product.category === category);
     this.resetInput();
   }
 
   filterBySubcategory(subcategory: string, category: string) {
+    this.subcategoriaSelecionada = subcategory;
+    this.categoriaSelecionada = category;
     this.filteredProducts = this.products.filter(product =>
       product.category === category && // Verifica se o produto pertence à categoria
       product.subcategories?.includes(subcategory) // Verifica se o produto pertence à subcategoria
@@ -54,12 +58,13 @@ export class ListaProdutosComponent implements OnInit {
   }
 
   resetFilter() {
+    this.categoriaSelecionada = 'todos';
+    this.subcategoriaSelecionada = '';
     this.filteredProducts = this.products;
     this.setInputValue('')
   }
 
   filterBySearch(valor: string) {
-    console.log('filter', valor)
     const lowerCaseSearch = valor.toLowerCase();
     this.filteredProducts = this.products.filter(product =>
       product.name.toLowerCase().includes(lowerCaseSearch)

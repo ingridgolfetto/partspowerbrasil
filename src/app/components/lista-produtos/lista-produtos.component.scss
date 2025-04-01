@@ -6,6 +6,21 @@ $corPrimaria:#e59416;
   .header-produtos {
     position: relative;
     height: 500px;
+
+        
+
+    video {
+      position: absolute;
+      top: 40%;
+      left: 675px;
+      min-width: 1352px;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      background-size: cover;
+    }
+
     
     .overlay {
       position: absolute;
@@ -215,6 +230,10 @@ $corPrimaria:#e59416;
       }
     }
   }
+}
+
+.filtro-ativado {
+  color: $corPrimaria !important;
 }
 
 @media (max-width: 896px) {

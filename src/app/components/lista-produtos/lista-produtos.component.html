@@ -14,7 +14,6 @@
   
   
   <div class="body-produtos">
-  
     <mat-form-field class="pesquisar">
       <input matInput #searchInput type="search" placeholder="Buscar por código" (input)="filterBySearch(searchInput.value)">
       <button matSuffix mat-icon-button aria-label="Search" (input)="filterBySearch(searchInput.value)">
@@ -24,14 +23,14 @@
 
     <div class="container-lita-prodtudos">
     <div class="filter">
-      <button class="categoria" (click)="resetFilter()">Todos</button>
+      <button class="categoria" [ngClass]="categoriaSelecionada == 'todos' ? 'filtro-ativado' : ''" (click)="resetFilter()">Todos</button>
       <ng-container *ngFor="let category of categories">
-        <button class="categoria" (click)="filterByCategory(category.name)">
+        <button class="categoria" [ngClass]="categoriaSelecionada == category.name ? 'filtro-ativado' : ''" (click)="filterByCategory(category.name)">
           {{ category.name }}
         </button>
         <ng-container *ngIf="category.subcategories">
           <ng-container *ngFor="let subcategory of category.subcategories">
-            <button class="subcategoria" (click)="filterBySubcategory(subcategory, category.name)">
+            <button class="subcategoria" [ngClass]="subcategoriaSelecionada == subcategory ? 'filtro-ativado' : ''" (click)="filterBySubcategory(subcategory, category.name)">
               {{ subcategory }}
             </button>
           </ng-container>
