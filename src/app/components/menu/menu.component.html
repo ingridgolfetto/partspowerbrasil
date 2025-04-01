@@ -1,10 +1,47 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-      <img class="logo" src="img/logo-semfundo.png" width="75" height="75" alt="Logo Parts Power Flex"/>
-    <nav class="nav-links" >
-      <ng-container *ngFor="let item of itensMenu">
+      <a href="home"><img class="logo" src="img/logo-semfundo.png" width="75" height="75" alt="Logo Parts Power Flex"/></a>
+    <nav class="nav-links" *ngIf="!mobile">
+      <ng-container *ngFor="let item of itensMenu; let i = index">
+        <div class="menu-item">
         <button class="item-menu" [ngClass]="[item.selecionado ? 'link-ativado' : '']"
-          (click)="navegacaoRotaMenu(item.rota)">{{item.nome}}</button>
+          (click)="navegacaoRotaMenu(item.rota)">{{item.nome}} <mat-icon *ngIf="i == 1">keyboard_arrow_down</mat-icon>
+        </button>
+
+        <div *ngIf="i == 1" class="submenu">
+          <button
+            *ngFor="let categoria of categorias"
+            class="submenu-item"
+            (click)="navegacaoCategoria(categoria.name)"
+          >
+            {{ categoria.name }}
+          </button>
+        </div>
+      </div>
       </ng-container>
     </nav>
   </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="menu-mobile" *ngIf="mobile">
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <ng-container *ngFor="let item of itensMenu; let i = index">
+        <li [ngClass]="[i == 1 ? 'produtos' : '']" (click)="navegacaoRotaMenu(item.rota)">{{item.nome}}</li>
+
+      <ng-container *ngIf="i == 1">
+        <ng-container *ngFor="let categoria of categorias">
+          <li class="subcategoria" (click)="navegacaoCategoria(categoria.name)">{{categoria.name}}</li>
+        </ng-container>
+      </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+</div>

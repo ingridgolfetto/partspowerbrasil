@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { MaterialModule } from '../../material.module';
 import { IMenuItems } from '../../interface/menu';
 import { MENU } from '../../enums/menu-itens';
 import { Router } from '@angular/router';
 import { PartsService } from '../../service/parts.service';
+import { Categorias } from '../../enums/categorias';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-menu',
@@ -13,9 +15,11 @@ import { PartsService } from '../../service/parts.service';
 })
 export class MenuComponent {
   itensMenu: IMenuItems[] = MENU;
-  mobile = window.innerWidth < 768;
+  categorias = Object.values(Categorias)
+  mobile: boolean = window.innerWidth < 768;
   sidenavOpened = false;
   activeRoute: string = '';
+  @ViewChild('drawer') drawer!: MatDrawer;
 
   constructor(
     private route: Router,
@@ -26,8 +30,16 @@ export class MenuComponent {
   });
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.mobile = window.innerWidth < 768;
+  }
+
   toggleSidenav() {
     this.sidenavOpened = !this.sidenavOpened;
+    if (this.drawer) {
+      this.drawer.toggle(); // Alterna o estado do drawer (abre/fecha)
+    }
   }
 
   navegacaoRotaMenu(rota: string) {
@@ -40,5 +52,20 @@ export class MenuComponent {
       this.route.navigate(['produtos']);
     }
   })
+  this.closeMenu()
+
+}
+
+navegacaoCategoria(categoria: string) {
+  // Lógica para navegar ou filtrar produtos pela categoria
+  this.route.navigate(['produtos'], { queryParams: { categoria } });
+  this.closeMenu()
+}
+
+closeMenu() {
+  const checkbox = document.getElementById('openSidebarMenu') as HTMLInputElement;
+  if (checkbox) {
+    checkbox.checked = false; // Desmarca o checkbox para fechar o menu
+  }
 }
 }
