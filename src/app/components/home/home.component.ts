@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
       this.router.events.subscribe((event) => {
           if (event instanceof NavigationEnd) {
             this.setScroll(rota)
-
         } 
       });
       this.setScroll(rota)
@@ -80,9 +79,11 @@ export class HomeComponent implements OnInit {
   }
 
   setScroll(rota: string) {
+    if (rota != 'home') {
     const element = document.querySelector(`#${rota}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
     }
   }
 
