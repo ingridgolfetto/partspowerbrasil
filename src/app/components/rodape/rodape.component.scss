@@ -1,0 +1,151 @@
+$corPrimaria:#e59416;
+.cor-primaria {color: #e59416 !important};
+
+.container-contato {
+    padding: 50px;
+    background: black;
+    display: flex;
+    justify-content: space-around;
+
+    .sobre {
+        min-width: 450px;
+        h3 {
+            color: $corPrimaria;
+        }
+
+        p {
+            color: white;
+            margin-top: 15px;
+            max-width: 350px;
+        }
+
+        .socials {
+            h4 {
+                color: white;
+            }
+            margin-top: 15px    
+            a {
+                margin-right: 10px;
+            }
+            svg:hover path { 
+                fill: $corPrimaria;
+            }
+        }
+    }
+
+    .links-rapidos {
+        margin: 0px 30px;
+        justify-items: center;
+        h4  {
+            color: white;
+        }
+
+        .item {
+            color: white;
+            cursor: pointer;
+
+            svg {
+            vertical-align: top;
+            }
+
+            &:hover {
+                color: $corPrimaria;
+
+                svg {
+                    fill: $corPrimaria;
+                }
+            }
+        }
+    }
+
+    .contato {
+    h3 {
+        color: white;
+        text-align: center;
+    }
+
+    .body-contato{
+        display: flex;
+        justify-content: center;
+
+        .form-contato {
+            display: grid;
+            margin-right: 20px;
+
+            input, textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            textarea {
+                resize: none;
+              }
+
+            .btn-enviar {
+                color: white;
+                border: none;
+                background: $corPrimaria;
+                padding: 20px;
+                cursor: pointer;
+        
+                &:hover {
+                    background: #c07f16;
+                }
+            }
+        }
+
+        .info-contato{
+            display: grid;
+            color: white;
+
+            .info {
+                margin-top: 10px;
+                span {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    }
+}
+
+.container-rodape {
+    padding: 10px;
+    background: #2A2A2A;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+@media (max-width: 768px) {
+.container-contato {
+    flex-direction: column;
+    padding: 20px;
+
+    .sobre, .contato {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .links-rapidos {
+        display: none;
+    }
+
+    .body-contato {
+      flex-direction: column;
+
+      .form-contato {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .info-contato {
+        width: 100%;
+      }
+    }
+  }
+}
