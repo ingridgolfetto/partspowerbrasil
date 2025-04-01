@@ -1,5 +1,10 @@
-$corPrimaria:#e59416;
-.cor-primaria {color: #e59416 !important};
+$corPrimaria: #e59416;
+
+.cor-primaria {
+    color: #e59416 !important
+}
+
+;
 
 .container-contato {
     padding: 50px;
@@ -9,6 +14,7 @@ $corPrimaria:#e59416;
 
     .sobre {
         min-width: 450px;
+
         h3 {
             color: $corPrimaria;
         }
@@ -23,11 +29,12 @@ $corPrimaria:#e59416;
             h4 {
                 color: white;
             }
-            margin-top: 15px    
-            a {
+
+            margin-top: 15px a {
                 margin-right: 10px;
             }
-            svg:hover path { 
+
+            svg:hover path {
                 fill: $corPrimaria;
             }
         }
@@ -36,7 +43,8 @@ $corPrimaria:#e59416;
     .links-rapidos {
         margin: 0px 30px;
         justify-items: center;
-        h4  {
+
+        h4 {
             color: white;
         }
 
@@ -45,7 +53,7 @@ $corPrimaria:#e59416;
             cursor: pointer;
 
             svg {
-            vertical-align: top;
+                vertical-align: top;
             }
 
             &:hover {
@@ -59,57 +67,67 @@ $corPrimaria:#e59416;
     }
 
     .contato {
-    h3 {
-        color: white;
-        text-align: center;
-    }
-
-    .body-contato{
-        display: flex;
-        justify-content: center;
-
-        .form-contato {
-            display: grid;
-            margin-right: 20px;
-
-            input, textarea {
-                width: 100%;
-                padding: 10px;
-                margin: 10px 0px;
-                border: none;
-                border-radius: 5px;
-            }
-
-            textarea {
-                resize: none;
-              }
-
-            .btn-enviar {
-                color: white;
-                border: none;
-                background: $corPrimaria;
-                padding: 20px;
-                cursor: pointer;
-        
-                &:hover {
-                    background: #c07f16;
-                }
-            }
-        }
-
-        .info-contato{
-            display: grid;
+        h3 {
             color: white;
+            text-align: center;
+        }
 
-            .info {
-                margin-top: 10px;
-                span {
-                    margin-left: 10px;
-                    vertical-align: top;
+        .body-contato {
+            display: flex;
+            justify-content: center;
+
+            .form-contato {
+                display: grid;
+                margin-right: 20px;
+
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0px;
+                    border: none;
+                    border-radius: 5px;
+                }
+
+                textarea {
+                    resize: none;
+                }
+
+                .btn-enviar {
+                    color: white;
+                    border: none;
+                    background: $corPrimaria;
+                    padding: 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #c07f16;
+                    }
+                }
+            }
+
+            .info-contato {
+                display: grid;
+                color: white;
+                cursor: pointer;
+
+                .info {
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+
+                    }
+
+                    margin-top: 10px;
+
+                    span {
+                        margin-left: 10px;
+                        vertical-align: top;
+                    }
                 }
             }
         }
-    }
     }
 }
 
@@ -123,30 +141,31 @@ $corPrimaria:#e59416;
 
 
 @media (max-width: 896px) {
-.container-contato {
-    flex-direction: column;
-    padding: 20px;
+    .container-contato {
+        flex-direction: column;
+        padding: 20px;
 
-    .sobre, .contato {
-      width: 100%;
-      margin-bottom: 20px;
+        .sobre,
+        .contato {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .links-rapidos {
+            display: none;
+        }
+
+        .body-contato {
+            flex-direction: column;
+
+            .form-contato {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .info-contato {
+                width: 100%;
+            }
+        }
     }
-
-    .links-rapidos {
-        display: none;
-    }
-
-    .body-contato {
-      flex-direction: column;
-
-      .form-contato {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .info-contato {
-        width: 100%;
-      }
-    }
-  }
 }
