@@ -27,8 +27,6 @@ export class ListaProdutosComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const categoria = params['categoria'];
       const codigo = params['codigo'];
-
-
       if (categoria) {
         // Seleciona a categoria na lista
         this.filterByCategory(categoria);
@@ -66,9 +64,9 @@ export class ListaProdutosComponent implements OnInit {
 
   filterBySearch(valor: string) {
     const lowerCaseSearch = valor.toLowerCase();
-    this.filteredProducts = this.products.filter(product =>
+    this.filteredProducts = this.products.filter(product => 
       product.name.toLowerCase().includes(lowerCaseSearch)
-    );
+    )
   }
 
   resetInput() {
@@ -89,5 +87,11 @@ export class ListaProdutosComponent implements OnInit {
       const numeroWhatsApp = '5511991763691'; // Substitua pelo número do WhatsApp (incluindo o código do país)
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
       window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+  }
+
+  isLinkAtivado(link: string): boolean {
+    return (
+      link === this.categoriaSelecionada || link === this.subcategoriaSelecionada
+    );
   }
 }

@@ -1,51 +1,79 @@
 <div class="container-produtos">
   <div class="header-produtos">
-     <video width="500" autoplay muted loop>
-    <source src="sobre.mp4" type="video/mp4">
-  </video>
+    <video width="500" autoplay muted loop>
+      <source src="sobre.mp4" type="video/mp4" />
+    </video>
     <div class="overlay"></div>
 
     <div class="descricao">
       <h3 class="titulo">NOSSOS PRODUTOS</h3>
       <h1 class="sub1">Soluções de alta performance para sua indústria</h1>
-      <h3 class="sub2">Conheça nossa linha de produtos desenvolvidos com materiais de alta qualidade e tecnologia avançada para garantir o máximo desempenho em aplicações exigentes.</h3>
+      <h3 class="sub2">
+        Conheça nossa linha de produtos desenvolvidos com materiais de alta
+        qualidade e tecnologia avançada para garantir o máximo desempenho em
+        aplicações exigentes.
+      </h3>
     </div>
   </div>
-  
-  
+
   <div class="body-produtos">
     <mat-form-field class="pesquisar">
-      <input matInput #searchInput type="search" placeholder="Buscar por código" (input)="filterBySearch(searchInput.value)">
-      <button matSuffix mat-icon-button aria-label="Search" (input)="filterBySearch(searchInput.value)">
+      <input
+        matInput
+        #searchInput
+        type="search"
+        placeholder="Buscar por código"
+        (input)="filterBySearch(searchInput.value)"
+      />
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Search"
+        (input)="filterBySearch(searchInput.value)"
+      >
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
 
     <div class="container-lita-prodtudos">
-    <div class="filter">
-      <button class="categoria" [ngClass]="categoriaSelecionada == 'todos' ? 'filtro-ativado' : ''" (click)="resetFilter()">Todos</button>
-      <ng-container *ngFor="let category of categories">
-        <button class="categoria" [ngClass]="categoriaSelecionada == category.name ? 'filtro-ativado' : ''" (click)="filterByCategory(category.name)">
-          {{ category.name }}
+      <div class="filter">
+        <button
+          class="categoria"
+          [ngClass]="{ 'filtro-ativado': isLinkAtivado('todos') }"
+          (click)="resetFilter()"
+        >
+          Todos
         </button>
-        <ng-container *ngIf="category.subcategories">
-          <ng-container *ngFor="let subcategory of category.subcategories">
-            <button class="subcategoria" [ngClass]="subcategoriaSelecionada == subcategory ? 'filtro-ativado' : ''" (click)="filterBySubcategory(subcategory, category.name)">
+        <ng-container *ngFor="let category of categories">
+          <button
+            class="categoria"
+            [ngClass]="{ 'filtro-ativado': isLinkAtivado(category.name) }"
+            (click)="filterByCategory(category.name)"
+          >
+            {{ category.name }}
+          </button>
+          <ng-container *ngIf="category.subcategories?.length">
+            <button
+              class="subcategoria"
+              *ngFor="let subcategory of category.subcategories"
+              [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory) }"
+              (click)="filterBySubcategory(subcategory, category.name)"
+            >
               {{ subcategory }}
             </button>
           </ng-container>
         </ng-container>
-      </ng-container>
-    </div>
-    
-    <div class="product-list">
-      <div class="product-card" *ngFor="let product of filteredProducts">
-        <img [src]="product.imageUrl" alt="{{ product.name }}">
-        <h3>{{ product.name }}</h3>
-        <button class="buy-button" (click)="rotaComprar(product.name)">Comprar</button>
+      </div>
+
+      <div class="product-list">
+        <div class="product-card" *ngFor="let product of filteredProducts">
+          <img [src]="product.imageUrl" alt="{{ product.name }}" />
+          <h3>{{ product.name }}</h3>
+          <button class="buy-button" (click)="rotaComprar(product.name)">
+            Comprar
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  </div>
 </div>
-
