@@ -19,8 +19,16 @@ export class ListaProdutosComponent implements OnInit {
   categories = Object.values(Categorias);
   categoriaSelecionada: string = '';
   subcategoriaSelecionada: string = '';
+  mobile: boolean = window.innerWidth < 768;
+  filterExpanded: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+
+  constructor(private route: ActivatedRoute) {
+    window.addEventListener('resize', () => {
+      this.mobile = window.innerWidth < 896;
+    });
+    console.log(this.mobile)
+  }
 
   ngOnInit(): void {
 
@@ -37,6 +45,10 @@ export class ListaProdutosComponent implements OnInit {
       }
     });
     
+  }
+
+  toggleFilter(): void {
+    this.filterExpanded = !this.filterExpanded; // Alterna o estado do filtro
   }
 
   filterByCategory(category: string) {

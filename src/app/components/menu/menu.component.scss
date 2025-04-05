@@ -97,7 +97,7 @@ $cor-primaria: #e59416;
   display: none;
 }
 
-@media (max-width: 896px) {
+@media (max-width: 768px) {
 
 .menu-mobile {
   display: block;
@@ -183,7 +183,7 @@ input[type=checkbox] {
     height: 100%;
     width: 100%;
     top: 22px;
-    left: 370px;
+    left: 340px;
     height: 22px;
     width: 22px;
 }

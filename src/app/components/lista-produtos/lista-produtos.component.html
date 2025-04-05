@@ -1,6 +1,6 @@
 <div class="container-produtos">
   <div class="header-produtos">
-    <video width="500" autoplay muted loop>
+    <video *ngIf="!mobile" autoplay muted loop>
       <source src="sobre.mp4" type="video/mp4" />
     </video>
     <div class="overlay"></div>
@@ -34,6 +34,7 @@
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
+    
 
     <div class="container-lita-prodtudos">
       <div class="filter">

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['<', '>'],
-    autoplay: true, // Ativa o autoplay
+    autoplay: false, // Ativa o autoplay
     autoplayTimeout: 3000, // Tempo entre as transições (em milissegundos)
     autoplayHoverPause: true,
     responsive: {
