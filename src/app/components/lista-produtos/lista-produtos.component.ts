@@ -20,7 +20,7 @@ export class ListaProdutosComponent implements OnInit {
   categoriaSelecionada: string = '';
   subcategoriaSelecionada: string = '';
   mobile: boolean = window.innerWidth < 768;
-  filterExpanded: boolean = false;
+  filterPanelOpen: boolean = false;
 
 
   constructor(private route: ActivatedRoute) {
@@ -46,9 +46,13 @@ export class ListaProdutosComponent implements OnInit {
     });
     
   }
+  applyFilter(): void {
+    this.filterPanelOpen = false; // Fecha o painel após aplicar o filtro
+    // Adicione aqui a lógica para aplicar os filtros
+  }
 
-  toggleFilter(): void {
-    this.filterExpanded = !this.filterExpanded; // Alterna o estado do filtro
+  toggleFilterPanel(): void {
+    this.filterPanelOpen = !this.filterPanelOpen; // Alterna o estado do painel de filtros
   }
 
   filterByCategory(category: string) {
@@ -71,7 +75,8 @@ export class ListaProdutosComponent implements OnInit {
     this.categoriaSelecionada = 'todos';
     this.subcategoriaSelecionada = '';
     this.filteredProducts = this.products;
-    this.setInputValue('')
+    this.filterPanelOpen = false;
+    this.setInputValue('');
   }
 
   filterBySearch(valor: string) {

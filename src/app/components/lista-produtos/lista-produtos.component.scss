@@ -109,11 +109,13 @@ $corPrimaria:#e59416;
   .container-lita-prodtudos {
     display: flex;
     max-height: 480px;
+
+  .filter-panel {
   .filter {
     display: block;
     justify-content: center;
     margin-bottom: 20px;
-    width: 450px !important;
+    width: 250px !important;
   
     button {
       display: block;
@@ -138,6 +140,7 @@ $corPrimaria:#e59416;
       }
     }
 }
+    }
 
 .product-list {
   display: flex;
@@ -291,6 +294,10 @@ $corPrimaria:#e59416;
         width: 100%; /* Garante que a largura seja total */
         height: 100%; /* Garante que ocupe toda a altura do contêiner */
 
+    .filter-actions{
+      display: flex;
+    height: auto;
+    align-items: center;
     .pesquisar {
        width: 85%;
       display: flex; /* Ativa o Flexbox */
@@ -299,7 +306,25 @@ $corPrimaria:#e59416;
       justify-content: center; /* Centraliza verticalmente */
       text-align: center; /* Centraliza o texto */
     }
-    
+    .filter-toggle {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: $corPrimaria;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 16px;
+      height: max-content;
+      margin-right: 15px;
+  
+      &:hover {
+        background-color: darken($corPrimaria, 10%);
+      }
+    }
+  }
     .container-lita-prodtudos {
       max-height: fit-content;
       display: flex; /* Ativa o Flexbox */
@@ -310,23 +335,87 @@ $corPrimaria:#e59416;
       width: 100%; /* Garante que a largura seja total */
       height: 100%; /* Garante que ocupe toda a altura do contêiner */
 
-      .filter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-        height: 100%;
+     
+    
+      .filter-panel {
 
-        .categoria {
-          font-size: 14px !important;
-          margin: 5px !important;
-          padding: 0px !important;
+        .filter-header{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+          color: $corPrimaria;
+          font-size: 16px;
+          font-weight: bold;
+          border-bottom: 1px solid #ddd;
+
         }
 
-        .subcategoria{
-          display: none !important;
+        position: fixed;
+        top: 0;
+        left: -100%; /* Inicialmente fora da tela */
+        width: 60%;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+    
+        &.open {
+          left: 0; /* Move o painel para dentro da tela */
+        }
+    
+        .filter {
+          // padding: 20px;
+          // display: flex;
+          // flex-direction: column;
+          // gap: 10px;
+          // width: initial !important;
+    
+          .categoria {
+            font-size: 14px;
+            // padding: 10px;
+            background-color: transparent;
+            // border: 1px solid $corPrimaria;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+    
+          .subcategoria {
+            font-size: 12px;
+            // padding: 5px 10px;
+            margin-left: 20px;
+          }
+        }
+    
+        .filter-actions {
+          display: grid;
+          padding: 10px 20px;
+          border-top: 1px solid #ddd;
+    
+          .apply-button,
+          .clear-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+    
+          .apply-button {
+            background-color: $corPrimaria;
+            color: white;
+          }
+    
+          .clear-button {
+            background-color: #ddd;
+            color: black;
+            margin-bottom: 10px;
+    
+            &:hover {
+              background-color: #bbb;
+            }
+          }
         }
       }
       .product-list {

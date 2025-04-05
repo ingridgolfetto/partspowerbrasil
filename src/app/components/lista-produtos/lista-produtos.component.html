@@ -17,6 +17,14 @@
   </div>
 
   <div class="body-produtos">
+    <div class="filter-actions">
+    <div
+        class="filter-toggle"
+        *ngIf="mobile"
+        (click)="toggleFilterPanel()"
+      >
+      <mat-icon>filter_list</mat-icon>
+      </div>
     <mat-form-field class="pesquisar">
       <input
         matInput
@@ -34,36 +42,53 @@
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
+  </div>
     
-
+    
     <div class="container-lita-prodtudos">
-      <div class="filter">
-        <button
-          class="categoria"
-          [ngClass]="{ 'filtro-ativado': isLinkAtivado('todos') }"
-          (click)="resetFilter()"
-        >
-          Todos
-        </button>
-        <ng-container *ngFor="let category of categories">
+      <div class="filter-panel" [class.open]="filterPanelOpen">
+        <div class="filter-header"  *ngIf="mobile">
+          <h3>Filtros</h3>
+          <button matSuffix
+          mat-icon-button
+          class="close-button" (click)="toggleFilterPanel()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="filter">
           <button
             class="categoria"
-            [ngClass]="{ 'filtro-ativado': isLinkAtivado(category.name) }"
-            (click)="filterByCategory(category.name)"
+            [ngClass]="{ 'filtro-ativado': isLinkAtivado('todos') }"
+            (click)="resetFilter()"
           >
-            {{ category.name }}
+            Todos
           </button>
-          <ng-container *ngIf="category.subcategories?.length">
+          <ng-container *ngFor="let category of categories">
             <button
-              class="subcategoria"
-              *ngFor="let subcategory of category.subcategories"
-              [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory) }"
-              (click)="filterBySubcategory(subcategory, category.name)"
+              class="categoria"
+              [ngClass]="{ 'filtro-ativado': isLinkAtivado(category.name) }"
+              (click)="filterByCategory(category.name)"
             >
-              {{ subcategory }}
+              {{ category.name }}
             </button>
+            <ng-container *ngIf="category.subcategories?.length">
+              <button
+                class="subcategoria"
+                *ngFor="let subcategory of category.subcategories"
+                [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory) }"
+                (click)="filterBySubcategory(subcategory, category.name)"
+              >
+                {{ subcategory }}
+              </button>
+            </ng-container>
           </ng-container>
-        </ng-container>
+        </div>
+  
+        <!-- Botões de ação -->
+        <div class="filter-actions"  *ngIf="mobile">
+          <button class="clear-button" (click)="resetFilter()">Limpar Filtro</button>
+          <button class="apply-button" (click)="applyFilter()">Aplicar Filtro</button>
+        </div>
       </div>
 
       <div class="product-list">
