@@ -133,6 +133,7 @@ $corPrimaria:#e59416;
       
       &.subcategoria {
         margin-left: 20px;
+        font-weight: bold;
       }
   
       &:hover, &:active {
@@ -151,9 +152,13 @@ $corPrimaria:#e59416;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 10px;
-    padding: 20px;
+     padding: 20px;
     width: 200px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-self: normal;
 
     img {
       width: 100%;
@@ -162,6 +167,9 @@ $corPrimaria:#e59416;
 
     h3 {
       margin: 10px 0;
+    }
+    h5 {
+      font-weight: normal;
     }
 
     p {

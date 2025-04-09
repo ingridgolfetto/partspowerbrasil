@@ -101,14 +101,20 @@ export class ListaProdutosComponent implements OnInit {
 
   rotaComprar(id: string) {
       const mensagem = `Olá, estou interessado no produto ${id}. Poderia me fornecer um orçamento? quantidade de peças:`;
-      const numeroWhatsApp = '5511991763691'; // Substitua pelo número do WhatsApp (incluindo o código do país)
+      const numeroWhatsApp = '5511992217075'; // Substitua pelo número do WhatsApp (incluindo o código do país)
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
       window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
   }
 
-  isLinkAtivado(link: string): boolean {
-    return (
-      link === this.categoriaSelecionada || link === this.subcategoriaSelecionada
-    );
+  isLinkAtivado(link: string, category?: string): boolean {
+    // Verifica se o link é a categoria ou subcategoria ativa
+    if (category) {
+      // Verifica se a subcategoria pertence à categoria selecionada
+      return (
+        link === this.subcategoriaSelecionada &&
+        category === this.categoriaSelecionada
+      );
+    }
+    return link === this.categoriaSelecionada;
   }
 }

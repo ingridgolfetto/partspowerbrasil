@@ -7,7 +7,7 @@
 
     <div class="descricao">
       <h3 class="titulo">NOSSOS PRODUTOS</h3>
-      <h1 class="sub1">Soluções de alta performance para sua indústria</h1>
+      <h1 class="sub1">Soluções de alta performance para sua maquina</h1>
       <h3 class="sub2">
         Conheça nossa linha de produtos desenvolvidos com materiais de alta
         qualidade e tecnologia avançada para garantir o máximo desempenho em
@@ -75,7 +75,7 @@
               <button
                 class="subcategoria"
                 *ngFor="let subcategory of category.subcategories"
-                [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory) }"
+                [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory, category.name) }"
                 (click)="filterBySubcategory(subcategory, category.name)"
               >
                 {{ subcategory }}
@@ -94,7 +94,8 @@
       <div class="product-list">
         <div class="product-card" *ngFor="let product of filteredProducts">
           <img [src]="product.imageUrl" alt="{{ product.name }}" />
-          <h3>{{ product.name }}</h3>
+          <h3>COD: {{ product.name }}</h3>
+          <h5> {{ product.category }} - {{ product.subcategories}}</h5>
           <button class="buy-button" (click)="rotaComprar(product.name)">
             Comprar
           </button>

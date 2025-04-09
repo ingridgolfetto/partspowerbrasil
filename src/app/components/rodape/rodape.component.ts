@@ -22,7 +22,7 @@ export class RodapeComponent {
 
   navegarWhatsApp() {
     const mensagem = `Olá, estou entrando em contato pelo site da Parts Power Flex.`;
-    const numeroWhatsApp = '5511991763691'; // Substitua pelo número do WhatsApp (incluindo o código do país)
+    const numeroWhatsApp = '5511992217075'; // Substitua pelo número do WhatsApp (incluindo o código do país)
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
   }
