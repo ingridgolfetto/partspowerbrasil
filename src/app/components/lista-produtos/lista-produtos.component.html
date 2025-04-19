@@ -56,32 +56,28 @@
           </button>
         </div>
         <div class="filter">
-          <button
-            class="categoria"
-            [ngClass]="{ 'filtro-ativado': isLinkAtivado('todos') }"
-            (click)="resetFilter()"
-          >
-            Todos
-          </button>
-          <ng-container *ngFor="let category of categories">
-            <button
-              class="categoria"
-              [ngClass]="{ 'filtro-ativado': isLinkAtivado(category.name) }"
-              (click)="filterByCategory(category.name)"
-            >
-              {{ category.name }}
-            </button>
-            <ng-container *ngIf="category.subcategories?.length">
-              <button
-                class="subcategoria"
-                *ngFor="let subcategory of category.subcategories"
-                [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory, category.name) }"
-                (click)="filterBySubcategory(subcategory, category.name)"
-              >
-                {{ subcategory }}
-              </button>
-            </ng-container>
-          </ng-container>
+          <mat-accordion>
+            <mat-expansion-panel class="categoria" *ngFor="let category of categories">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ category.name }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+        
+              <ng-container *ngIf="category.subcategories?.length">
+                <div class="subcategories">
+                  <button
+                    class="subcategoria"
+                    *ngFor="let subcategory of category.subcategories"
+                    [ngClass]="{ 'filtro-ativado': isLinkAtivado(subcategory, category.name) }"
+                    (click)="filterBySubcategory(subcategory, category.name)"
+                  >
+                    {{ subcategory }}
+                  </button>
+                </div>
+              </ng-container>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
   
         <!-- Botões de ação -->
