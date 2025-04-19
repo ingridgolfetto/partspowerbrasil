@@ -7,7 +7,7 @@ export const SLIDES: ISlide[] = [
     descricao: 'AH168456 - John Deere'
   },
   {
-    imagePath: 'produtos/RE586976.png',
+    imagePath: 'produtos/RE586976.jpg',
     id: 2,
     descricao: 'RE586976 - John Deere'
   },
@@ -17,12 +17,12 @@ export const SLIDES: ISlide[] = [
     descricao: 'AH223951 - John Deere'
   },
   {
-    imagePath: 'produtos/RE70472.jpeg',
+    imagePath: 'produtos/RE70472.jpg',
     id: 4,
     descricao: 'RE70472 - John Deere'
   },
   {
-    imagePath: 'produtos/RE520465.jpeg',
+    imagePath: 'produtos/RE520465.jpg',
     id: 5,
     descricao: 'RE520465 - John Deere'
   },
@@ -32,7 +32,7 @@ export const SLIDES: ISlide[] = [
     descricao: '48012333 - Case'
   },
   {
-    imagePath: 'produtos/87396965.jpeg',
+    imagePath: 'produtos/87396965.jpg',
     id: 7,
     descricao: '87396965 - Case'
   }
