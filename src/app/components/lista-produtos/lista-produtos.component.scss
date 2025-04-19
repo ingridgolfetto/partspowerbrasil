@@ -1,5 +1,4 @@
 $corPrimaria:#e59416;
-.cor-primaria {color: #e59416 !important};
 
 .container-produtos {
 
@@ -99,8 +98,6 @@ $corPrimaria:#e59416;
 
 
 .body-produtos {
-  // display: flex;
-  // padding: 50px;
   position: relative;
   background-color: white;
   padding-bottom: 20px;
@@ -187,11 +184,6 @@ $corPrimaria:#e59416;
       font-weight: normal;
     }
 
-    p {
-      font-size: 0.875rem;
-      color: #555;
-    }
-
     .buy-button {
       margin-top: 10px;
       padding: 10px 20px;
@@ -209,56 +201,6 @@ $corPrimaria:#e59416;
   }
 }
 }
-
-
-// @media (max-width: 1024px) {
-//   .header-produtos {
-//     height: 400px !important;
-
-//     .descricao {
-//       top:35% !important;
-
-//       .titulo {
-//         font-size: 1.25rem;
-//       }
-
-//       .sub1 {
-//         font-size: 1rem;
-//       }
-
-//       .sub2 {
-//         font-size: 0.875rem;
-//       }
-//     }
-//   }
-
-//   .body-produtos {
-//     .container-lita-prodtudos {
-//       flex-direction: row;
-
-//       .filter {
-//         max-width: 130px !important;
-//         .categoria {
-//           font-size: 14px !important;
-//           margin: 5px !important;
-//           padding: 0px !important;
-//           inline-size: max-content !important;
-//           padding: 0px !important;
-
-//         }
-
-//         .subcategoria{
-//           margin-left: 5px !important;
-//         }
-//       }
-//       .product-list {
-//         .product-card {
-//           width: calc(50% - 20px); /* 2 cards por linha */
-//         }
-//       }
-//     }
-//   }
-// }
 
 .filtro-ativado {
   color: $corPrimaria !important;
