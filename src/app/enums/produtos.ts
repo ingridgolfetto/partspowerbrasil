@@ -166,13 +166,6 @@ export const PRODUTOS: Produtos[] = [
   },
   {
     id: 3,
-    name: '1202871800',
-    category: Categorias.compressores.name,
-    subcategories: [Categorias.compressores.subcategories[2]],
-    imageUrl: 'produtos/1202871800.jpg',
-  },
-  {
-    id: 3,
     name: 'M43',
     category: Categorias.compressores.name,
     subcategories: [Categorias.compressores.subcategories[0]],

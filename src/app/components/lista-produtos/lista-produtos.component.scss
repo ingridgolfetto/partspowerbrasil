@@ -358,6 +358,13 @@ $corPrimaria:#e59416;
      
         .product-card {
           width: 28%; /* 1 card por linha */
+
+          img {
+              width: 100%; /* Faz a imagem ocupar toda a largura do contêiner */
+              height: auto; /* Mantém a proporção da imagem */
+              object-fit: contain; /* Ajusta a imagem para cobrir o espaço sem distorção */
+              max-height: 200px; /* Define uma altura máxima para evitar esticamento vertical */
+          }
         }
       }
     }
