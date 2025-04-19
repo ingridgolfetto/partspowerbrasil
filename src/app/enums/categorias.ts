@@ -1,7 +1,7 @@
 export const Categorias = {
   johnDeere: {
     name: 'John Deere',
-    subcategories: ['Acoplamentos', 'Polia', 'Coxim']
+    subcategories: ['Acoplamentos', 'Polia', 'Coxim', 'cardan']
   },
   masseyFerguson: {
     name: 'Massey Ferguson',
@@ -17,6 +17,10 @@ export const Categorias = {
   },
   newHolland: {
     name: 'New Holland',
-    subcategories: ['Acoplamentos', 'Coxim']
+    subcategories: ['Acoplamentos', 'Coxim', 'polia']
+  },
+  pacarregadeira: {
+    name: 'Pá carregadeira',
+    subcategories: ['Acoplamentos']
   }
 }
