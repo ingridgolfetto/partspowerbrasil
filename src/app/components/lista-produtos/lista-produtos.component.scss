@@ -347,7 +347,6 @@ $corPrimaria:#e59416;
         }
       }
       .product-list {
-        max-height: 420px;
         display: flex; /* Ativa o Flexbox */
         flex-direction: row; /* Alinha os elementos verticalmente */
         align-items: center; /* Centraliza horizontalmente */
@@ -370,4 +369,8 @@ $corPrimaria:#e59416;
     }
   }
 }
+}
+
+.max-h-420 {
+  max-height: 420px;
 }

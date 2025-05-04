@@ -94,7 +94,7 @@
 
 
       
-      <div class="product-list">
+      <div class="product-list" [ngClass]="{'max-h-420' : mobile && !mostraProduto }">
         <ng-container *ngIf="mostraProduto; else mostraLista">
           <app-produto [produto]="detalhesProduto" (voltarListaProdutos)="rotaLista($event)"></app-produto>
         </ng-container>
