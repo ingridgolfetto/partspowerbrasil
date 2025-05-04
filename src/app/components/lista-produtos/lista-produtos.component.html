@@ -1,3 +1,5 @@
+
+
 <div class="container-produtos">
   <div class="header-produtos">
     <video *ngIf="!mobile" autoplay muted loop>
@@ -57,9 +59,12 @@
         </div>
         <div class="filter">
           <mat-accordion>
-            <mat-expansion-panel class="categoria" *ngFor="let category of categories">
+            <mat-expansion-panel class="categoria" *ngFor="let category of categories"
+            [expanded]="categoriaSelecionada === category.name">
               <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title 
+                [ngClass]="{ 'filtro-ativado': categoriaSelecionada === category.name }"
+                >
                   {{ category.name }}
                 </mat-panel-title>
               </mat-expansion-panel-header>
@@ -87,15 +92,23 @@
         </div>
       </div>
 
+
+      
       <div class="product-list">
+        <ng-container *ngIf="mostraProduto; else mostraLista">
+          <app-produto [produto]="detalhesProduto" (voltarListaProdutos)="rotaLista($event)"></app-produto>
+        </ng-container>
+
+        <ng-template #mostraLista>
         <div class="product-card" *ngFor="let product of filteredProducts">
           <img [src]="product.imageUrl" alt="{{ product.name }}" />
           <h3>COD: {{ product.name }}</h3>
           <h5> {{ product.category }} - {{ product.subcategories}}</h5>
-          <button class="buy-button" (click)="rotaComprar(product.name)">
+          <button class="buy-button" (click)="rotaProduto(product)">
             Comprar
           </button>
         </div>
+      </ng-template>
       </div>
     </div>
   </div>

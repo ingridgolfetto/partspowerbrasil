@@ -1,0 +1,200 @@
+
+
+
+.produto-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  .produto-header {
+    background-color: #424242;
+    text-align: center;
+    padding-top: 40px;    
+    align-items: center;
+    display: flex;
+
+    button {
+        color: #fff
+    }
+
+    .titulo{
+        text-align: center;
+        width: 100%;
+        h1 {
+            color: #ffffff
+        }
+    }
+  }
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+    padding: 10px 50px;
+
+  
+    a {
+      text-decoration: none;
+      color: #000;
+        font-weight: bold;
+        cursor: pointer;
+  
+      &:hover {
+        color: #e59416;
+      }
+    }
+  }
+
+  .produto-detalhes {
+  padding: 0px 100px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+    text-align: center;
+    display: flex;
+
+    img {
+      width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .detalhes {
+        margin-left: 100px;
+        display: grid;
+        h1 {
+        font-size: 24px;
+        margin: 0px;
+        }
+
+        span {
+        font-size: 16px;
+        color: #555;
+        margin: 0px;
+        }
+
+        .produto-acoes {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            justify-content: center;
+          
+            .quantidade-container {
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                border-radius: 40px;
+                border: 1px solid #555;
+                width: 152px;
+              
+                button {
+                  margin: 0 2px;
+                  background: transparent;
+                  border: none;
+                  box-shadow: none;
+                }
+              
+                .quantidade-input {
+                  width: 60px;
+                  text-align: center;
+                  font-size: 18px;
+                  font-weight: bold;
+                  border: none;
+                  outline: none;
+                  background: transparent;
+                }
+              }
+          
+            }
+            button.comprar {
+              background: transparent;
+              border: none;
+              box-shadow: none;
+              color: white;
+              background-color: #e59416;
+              margin-top: 10px;
+              padding: 10px 20px;
+              height: 35px;
+              background-color: #e59416;
+              color: white;
+              border: none;
+              cursor: pointer;
+          
+                &:hover {
+                  background-color: #c07f16;
+                }
+            }
+    }
+  }
+
+
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+@media (max-width: 768px) {
+    .produto-container {
+      margin-top: 20px;
+  
+      .produto-header {
+        padding-top: 20px;
+  
+        .titulo h1 {
+          font-size: 18px;
+        }
+      }
+  
+      .breadcrumbs {
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+  
+      .produto-detalhes {
+        flex-direction: column;
+        padding: 0 20px;
+  
+        img {
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto 20px;
+        }
+  
+        .detalhes {
+          margin-left: 0;
+          text-align: center;
+  
+          h1 {
+            font-size: 20px;
+          }
+  
+          span {
+            font-size: 14px;
+          }
+  
+          .produto-acoes {
+            flex-direction: column;
+  
+            .quantidade-container {
+              width: 100%;
+              max-width: 143px;
+              margin: 10px auto;
+  
+              .quantidade-input {
+                width: 50px;
+              }
+            }
+  
+            button.comprar {
+              width: 100%;
+              max-width: 200px;
+            }
+          }
+        }
+      }
+    }
+  }

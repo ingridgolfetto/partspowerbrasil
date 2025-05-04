@@ -5,10 +5,11 @@ import { Categorias } from '../../enums/categorias';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material.module';
 import { ActivatedRoute } from '@angular/router';
+import { ProdutoComponent } from "./produto/produto.component";
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule, ProdutoComponent],
   templateUrl: './lista-produtos.component.html',
   styleUrl: './lista-produtos.component.scss'
 })
@@ -21,6 +22,8 @@ export class ListaProdutosComponent implements OnInit {
   subcategoriaSelecionada: string = '';
   mobile: boolean = window.innerWidth < 768;
   filterPanelOpen: boolean = false;
+  mostraProduto: boolean = false;
+  detalhesProduto: Produtos | null = null;
 
 
   constructor(private route: ActivatedRoute) {
@@ -99,12 +102,17 @@ export class ListaProdutosComponent implements OnInit {
     }
   }
 
-  rotaComprar(id: string) {
-      const mensagem = `Olá, estou interessado no produto ${id}. Poderia me fornecer um orçamento? quantidade de peças:`;
-      const numeroWhatsApp = '5511992217075'; // Substitua pelo número do WhatsApp (incluindo o código do país)
-      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+  rotaProduto(produto: Produtos) {
+    this.mostraProduto = true;
+    this.detalhesProduto = produto;
   }
+
+  rotaLista(event: boolean) {
+    console.log(event)
+    this.mostraProduto = event;
+    this.detalhesProduto = null;
+  }
+
 
   isLinkAtivado(link: string, category?: string): boolean {
     // Verifica se o link é a categoria ou subcategoria ativa

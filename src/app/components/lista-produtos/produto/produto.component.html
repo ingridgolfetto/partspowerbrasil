@@ -1,0 +1,61 @@
+
+<div class="produto-container" *ngIf="produto">
+
+    <div class="produto-header">
+        <button mat-icon-button (click)="voltar()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="titulo">
+            <h1>{{produto.name}}</h1>
+        </div>
+    </div>
+
+    <!-- <div class="breadcrumbs">
+        <ng-container *ngFor="let breadcrumb of breadcrumbs; let first = first; let last = last; let i = index">
+            <ng-container *ngIf="!first"> &gt; </ng-container>
+            <a *ngIf="!last" (click)="navegacaoRotaMenu(breadcrumb.label)">{{ breadcrumb.label }}</a>
+            <span *ngIf="last">{{ breadcrumb.label }}</span>
+        </ng-container>
+      </div> -->
+
+
+    <div class="produto-detalhes">
+        <img [src]="produto.imageUrl" alt="{{ produto.name }}" />
+    <div class="detalhes">
+        <h1>Código da peça: {{ produto.name }}</h1>
+        <span>{{ produto.category }}</span>
+        <span>{{ produto.subcategories}}</span>
+
+        <div class="produto-acoes">
+            <span>quantidade:</span>
+            <div class="quantidade-container">
+              <button mat-mini-fab color="primary" (click)="alterarQuantidade(-1)" [disabled]="quantidade <= 1">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="quantidade"
+                min="1"
+                (input)="validarQuantidade()"
+                class="quantidade-input"
+              />
+              <button mat-mini-fab color="primary" (click)="alterarQuantidade(1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+        
+        </div>
+        <button
+          class="comprar"
+          color="primary"
+          (click)="rotaComprar(produto.name)"
+          [disabled]="quantidade < 1"
+        >
+          Comprar
+        </button>
+    </div>
+  </div>
+
+ 
+</div>
