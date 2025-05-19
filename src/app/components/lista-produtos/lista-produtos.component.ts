@@ -50,8 +50,8 @@ export class ListaProdutosComponent implements OnInit {
     
   }
   applyFilter(): void {
-    this.filterPanelOpen = false; // Fecha o painel após aplicar o filtro
-    // Adicione aqui a lógica para aplicar os filtros
+    this.filterPanelOpen = false; 
+    this.mostraProduto = false;
   }
 
   toggleFilterPanel(): void {
@@ -80,6 +80,7 @@ export class ListaProdutosComponent implements OnInit {
     this.filteredProducts = this.products;
     this.filterPanelOpen = false;
     this.setInputValue('');
+    this.mostraProduto = false;
   }
 
   filterBySearch(valor: string) {
