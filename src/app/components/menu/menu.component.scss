@@ -98,6 +98,14 @@ $cor-primaria: #e59416;
 }
 
 @media (max-width: 768px) {
+  .mat-toolbar {
+    .mat-toolbar-row, .mat-toolbar-single-row {
+      .logo {
+        width: 51px !important;
+        height: 41px !important;
+      }
+    }
+  }
 
 .menu-mobile {
   display: block;
